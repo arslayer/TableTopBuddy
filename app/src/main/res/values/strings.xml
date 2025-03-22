@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">TableTop Buddy</string>
-<<<<<<< HEAD
-=======
     <string name="roll_dice">Roll Dice</string>
     <string name="flip_a_coin">Flip A Coin</string>
     <string name="track_health">Track Health</string>
@@ -17,5 +15,4 @@
     <string name="add">Add</string>
     <string name="subtract">Subtract</string>
     <string name="total_health_display">Total Health: %1$s</string>
->>>>>>> dev2
 </resources>
