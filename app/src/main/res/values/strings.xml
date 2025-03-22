@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TableTop Buddy</string>
+<<<<<<< HEAD
+=======
+    <string name="roll_dice">Roll Dice</string>
+    <string name="flip_a_coin">Flip A Coin</string>
+    <string name="track_health">Track Health</string>
+    <string name="flip_coin">Flip Coin</string>
+    <string name="number_of_dice">Number of Dice</string>
+    <string name="number_of_sides">Number of Sides</string>
+    <string name="home">Home</string>
+    <string name="die_rolled">Die Rolled: %1$s</string>
+    <string name="die_total">Die Total: %1$s</string>
+    <string name="modifier">Modifier?</string>
+    <string name="total_health">Total Health</string>
+    <string name="health_adjustment">Health Adjustment</string>
+    <string name="add">Add</string>
+    <string name="subtract">Subtract</string>
+    <string name="total_health_display">Total Health: %1$s</string>
+>>>>>>> dev2
 </resources>
