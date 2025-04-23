@@ -3,9 +3,7 @@ package org.cist2931.tabletopbuddy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,7 +26,12 @@ enum class MainNames() {
 
 @Composable
 fun MainScreen(navController: NavController) {
-    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("Welcome to TableTopBuddy!")
         Button(onClick = {navController.navigate(MainNames.CoinFlip.name)}) { Text(text = stringResource(
             R.string.flip_a_coin
         )
@@ -51,10 +54,8 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun MainApp(){
     val navController = rememberNavController()
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         NavHost(navController = navController,
-            startDestination = MainNames.Start.name,
-            modifier = Modifier.padding(innerPadding)) {
+            startDestination = MainNames.Start.name) {
             composable(route = MainNames.Start.name) {
                 MainScreen(
                     navController
@@ -71,9 +72,8 @@ fun MainApp(){
             }
         }
     }
-}
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MainScreenPreview(){
     TableTopBuddyTheme { 
