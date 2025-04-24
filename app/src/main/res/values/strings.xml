@@ -5,7 +5,7 @@
     <string name="track_health">Track Health</string>
     <string name="flip_coin">Flip Coin</string>
     <string name="number_of_dice">Number of Dice</string>
-    <string name="number_of_sides">Number of Sides</string>
+    <string name="number_of_sides">Select Number of Sides</string>
     <string name="home">Home</string>
     <string name="die_rolled">Die Rolled: %1$s</string>
     <string name="die_total">Die Total: %1$s</string>

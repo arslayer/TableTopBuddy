@@ -16,7 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.cist2931.tabletopbuddy.ui.theme.TableTopBuddyTheme
 
-enum class MainNames() {
+enum class MainNames {
     Start,
     CoinFlip,
     Roll,
@@ -54,24 +54,24 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun MainApp(){
     val navController = rememberNavController()
-        NavHost(navController = navController,
-            startDestination = MainNames.Start.name) {
-            composable(route = MainNames.Start.name) {
-                MainScreen(
-                    navController
-                )
-            }
-            composable(route = MainNames.CoinFlip.name) {
-                CoinFlipScreen(navController)
-            }
-            composable(route = MainNames.Roll.name) {
-                RollScreen(navController)
-            }
-            composable(route = MainNames.Health.name) {
-                HealthScreen(navController)
-            }
+    NavHost(navController = navController,
+        startDestination = MainNames.Start.name) {
+        composable(route = MainNames.Start.name) {
+            MainScreen(
+                navController
+            )
+        }
+        composable(route = MainNames.CoinFlip.name) {
+            CoinFlipScreen(navController)
+        }
+        composable(route = MainNames.Roll.name) {
+            RollScreen(navController)
+        }
+        composable(route = MainNames.Health.name) {
+            HealthScreen(navController)
         }
     }
+}
 
 @Preview(showBackground = true)
 @Composable
