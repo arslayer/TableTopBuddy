@@ -13,7 +13,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MainApp()
+            TableTopBuddyTheme {
+                MainApp()
+            }
         }
     }
 }
