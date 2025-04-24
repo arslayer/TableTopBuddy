@@ -38,7 +38,7 @@ import kotlin.random.nextInt
 // RollScreen
 @Composable
 fun RollScreen(navController: NavController){
-    var numDice by rememberSaveable { mutableStateOf("") }
+    var numDice by rememberSaveable { mutableStateOf("1") }
     var numSides by rememberSaveable { mutableStateOf("") }
     var diceModifier by rememberSaveable { mutableStateOf("0") }
     var allDice: SnapshotStateList<Int>
@@ -48,13 +48,19 @@ fun RollScreen(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally) {
         OutlinedTextField(
             value = numDice,
-            onValueChange = { numDice = it.ifBlank { "1" } },
+            onValueChange = { value ->
+                numDice = value.filter { it.isDigit() }
+                if (numDice.isBlank()) numDice = "1"
+            },
             label = { Text(stringResource(R.string.number_of_dice))}
         )
         numSides = diceSelectorRadio().toString()
         OutlinedTextField(
             value = diceModifier,
-            onValueChange = { diceModifier = it},
+            onValueChange = { value ->
+                diceModifier = value.filter { it.isDigit() }
+                if (diceModifier.isBlank()) diceModifier = "0"
+            },
             label = {Text(stringResource(R.string.modifier))}
         )
         Row {
