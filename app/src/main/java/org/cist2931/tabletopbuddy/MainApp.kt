@@ -44,7 +44,7 @@ fun MainScreen(navController: NavController) {
             onValueChange = { value ->
                 vm.updateHealth(value.filter { it.isDigit() })
                 if (vm.totalHealth.isBlank()) vm.updateHealth("0")
-                },
+            },
             label = {
                 Text(stringResource(R.string.current_health))
             })
@@ -53,25 +53,31 @@ fun MainScreen(navController: NavController) {
             onValueChange = { value ->
                 vm.updateAdjustment(value.filter { it.isDigit() })
                 if (vm.healthAdjust.isBlank()) vm.updateAdjustment("0")
-                },
-            label = {Text(stringResource(R.string.health_adjustment))}
+            },
+            label = { Text(stringResource(R.string.health_adjustment)) }
         )
         Row {
             Button(
                 onClick = { vm.addHealth() }
-            ) { Text(stringResource(R.string.add))}
+            ) { Text(stringResource(R.string.add)) }
             Button(
                 onClick = { vm.subtractHealth() }
-            ) { Text(stringResource(R.string.subtract))}
+            ) { Text(stringResource(R.string.subtract)) }
         }
-        Button(onClick = {navController.navigate(MainNames.CoinFlip.name)}) { Text(text = stringResource(
-            R.string.flip_a_coin
-        )
-        ) }
-        Button(onClick = {navController.navigate(MainNames.Roll.name)}){ Text(text = stringResource(
-            R.string.roll_dice
-        )
-        )}
+        Button(onClick = { navController.navigate(MainNames.CoinFlip.name) }) {
+            Text(
+                text = stringResource(
+                    R.string.flip_a_coin
+                )
+            )
+        }
+        Button(onClick = { navController.navigate(MainNames.Roll.name) }) {
+            Text(
+                text = stringResource(
+                    R.string.roll_dice
+                )
+            )
+        }
 //        Button(onClick = {navController.navigate(MainNames.Health.name)}){ Text(text = stringResource(
 //            R.string.track_health
 //        )
@@ -80,14 +86,13 @@ fun MainScreen(navController: NavController) {
 }
 
 
-
-
-
 @Composable
-fun MainApp(){
+fun MainApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController,
-        startDestination = MainNames.Start.name) {
+    NavHost(
+        navController = navController,
+        startDestination = MainNames.Start.name
+    ) {
         composable(route = MainNames.Start.name) {
             MainScreen(
                 navController
@@ -107,8 +112,8 @@ fun MainApp(){
 
 @Preview(showBackground = true)
 @Composable
-fun MainScreenPreview(){
-    TableTopBuddyTheme { 
+fun MainScreenPreview() {
+    TableTopBuddyTheme {
         MainApp()
     }
 }

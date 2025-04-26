@@ -37,22 +37,24 @@ import kotlin.random.nextInt
 
 // RollScreen
 @Composable
-fun RollScreen(navController: NavController){
+fun RollScreen(navController: NavController) {
     var numDice by rememberSaveable { mutableStateOf("1") }
     var numSides by rememberSaveable { mutableStateOf("") }
     var diceModifier by rememberSaveable { mutableStateOf("0") }
     var allDice: SnapshotStateList<Int>
-    var diceTotal by rememberSaveable { mutableIntStateOf(0)}
+    var diceTotal by rememberSaveable { mutableIntStateOf(0) }
     var diceRolled by rememberSaveable { mutableStateOf("") }
-    Column(modifier = Modifier.fillMaxSize(), Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.fillMaxSize(), Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         OutlinedTextField(
             value = numDice,
             onValueChange = { value ->
                 numDice = value.filter { it.isDigit() }
                 if (numDice.isBlank()) numDice = "1"
             },
-            label = { Text(stringResource(R.string.number_of_dice))}
+            label = { Text(stringResource(R.string.number_of_dice)) }
         )
         numSides = diceSelectorRadio().toString()
         OutlinedTextField(
@@ -61,7 +63,7 @@ fun RollScreen(navController: NavController){
                 diceModifier = value.filter { it.isDigit() }
                 if (diceModifier.isBlank()) diceModifier = "0"
             },
-            label = {Text(stringResource(R.string.modifier))}
+            label = { Text(stringResource(R.string.modifier)) }
         )
         Row {
             Button(onClick = {
@@ -69,11 +71,14 @@ fun RollScreen(navController: NavController){
                 diceTotal = getTotal(allDice, toInt = diceModifier.toInt())
                 diceRolled = getDiceRolled(allDice)
             }) { Text(stringResource(R.string.roll_dice)) }
-            Button(onClick = {navController.navigate(MainNames.Start.name)}) {
+            Button(onClick = { navController.navigate(MainNames.Start.name) }) {
                 Text(stringResource(R.string.home))
             }
         }
-        Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(stringResource(R.string.die_total, diceTotal))
             Text(stringResource(R.string.die_rolled, diceRolled))
         }
@@ -90,7 +95,7 @@ fun rollEm(numSides: String = "6", numDice: String = "1"): SnapshotStateList<Int
 
 fun getTotal(dice: List<Int>, toInt: Int = 0): Int {
     var sum = 0
-    for(it in dice) {
+    for (it in dice) {
         sum += it
     }
     sum += toInt
@@ -99,14 +104,14 @@ fun getTotal(dice: List<Int>, toInt: Int = 0): Int {
 
 fun getDiceRolled(dice: List<Int>): String {
     val diceString = StringBuilder()
-    for(it in dice) {
+    for (it in dice) {
         diceString.append("$it ")
     }
     return diceString.toString()
 }
 
 @Composable
-fun diceSelectorRadio(modifier: Modifier = Modifier) : Int {
+fun diceSelectorRadio(modifier: Modifier = Modifier): Int {
     val diceOptions = listOf("4", "6", "8", "10", "12", "20", "100")
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[0]) }
     Column(modifier.selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally) {

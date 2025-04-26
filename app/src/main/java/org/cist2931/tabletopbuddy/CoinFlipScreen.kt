@@ -26,8 +26,12 @@ import kotlin.random.nextInt
 
 // Screen for coinflip
 @Composable
-fun CoinFlipScreen(navController: NavController){
-    Column(Modifier.fillMaxSize(), Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+fun CoinFlipScreen(navController: NavController) {
+    Column(
+        Modifier.fillMaxSize(),
+        Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         var flipResult by rememberSaveable { mutableStateOf("") }
         Text(text = flipResult)
         Spacer(Modifier.height(20.dp))
@@ -40,7 +44,7 @@ fun CoinFlipScreen(navController: NavController){
                     "Tails"
                 }
             }) { Text(text = stringResource(R.string.flip_coin)) }
-            Button(onClick = {navController.navigate(MainNames.Start.name)}) {
+            Button(onClick = { navController.navigate(MainNames.Start.name) }) {
                 Text("Back")
             }
         }
@@ -49,7 +53,7 @@ fun CoinFlipScreen(navController: NavController){
 
 @Preview(showBackground = true)
 @Composable
-fun CoinFlipScreenPreview(){
+fun CoinFlipScreenPreview() {
     TableTopBuddyTheme {
         CoinFlipScreen(navController = rememberNavController())
     }
