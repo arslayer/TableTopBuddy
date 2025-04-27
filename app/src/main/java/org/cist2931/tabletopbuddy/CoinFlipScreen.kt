@@ -63,14 +63,14 @@ fun CoinFlipScreen(navController: NavController) {
 //        Text(flipResult)
         Spacer(Modifier.height(20.dp))
         Row {
-            Button(onClick = {
-                val side = Random.nextInt(1..2)
-                flipResult = if (side == 1) {
-                    "Heads"
-                } else {
-                    "Tails"
-                }
-            }) { Text(text = stringResource(R.string.flip_coin)) }
+//            Button(onClick = {
+//                val side = Random.nextInt(1..2)
+//                flipResult = if (side == 1) {
+//                    "Heads"
+//                } else {
+//                    "Tails"
+//                }
+//            }) { Text(text = stringResource(R.string.flip_coin)) }
             Button(onClick = { navController.navigate(MainNames.Start.name) }) {
                 Text("Back")
             }
