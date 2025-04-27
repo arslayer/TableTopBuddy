@@ -134,7 +134,7 @@ fun getDiceRolled(dice: List<Int>): String {
 @Composable
 fun diceSelectorRadio(modifier: Modifier = Modifier): String {
     val diceOptions = listOf("4", "6", "8", "10", "12", "20", "100")
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[0]) }
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[6]) }
     Column(modifier.selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(stringResource(R.string.number_of_sides))
         diceOptions.forEach { text ->
