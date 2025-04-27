@@ -43,6 +43,7 @@ fun CoinFlipScreen(navController: NavController) {
             painter = painterResource(imageResource),
             contentDescription = flipResult
         )
+        Text(flipResult)
         Spacer(Modifier.height(20.dp))
         Row {
             Button(onClick = {
