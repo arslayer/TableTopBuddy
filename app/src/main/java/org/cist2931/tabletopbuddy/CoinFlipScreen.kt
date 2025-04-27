@@ -1,5 +1,6 @@
 package org.cist2931.tabletopbuddy
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,13 +29,20 @@ import kotlin.random.nextInt
 // Screen for coinflip
 @Composable
 fun CoinFlipScreen(navController: NavController) {
+    var flipResult by rememberSaveable { mutableStateOf("") }
+    val imageResource = when(flipResult) {
+        "Heads" -> R.drawable.heads
+        else -> R.drawable.tails
+    }
     Column(
         Modifier.fillMaxSize(),
         Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var flipResult by rememberSaveable { mutableStateOf("") }
-        Text(text = flipResult)
+        Image(
+            painter = painterResource(imageResource),
+            contentDescription = flipResult
+        )
         Spacer(Modifier.height(20.dp))
         Row {
             Button(onClick = {

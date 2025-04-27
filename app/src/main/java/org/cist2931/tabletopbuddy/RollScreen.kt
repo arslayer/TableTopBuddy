@@ -1,5 +1,6 @@
 package org.cist2931.tabletopbuddy
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,8 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,6 +47,15 @@ fun RollScreen(navController: NavController) {
     var allDice: SnapshotStateList<Int>
     var diceTotal by rememberSaveable { mutableIntStateOf(0) }
     var diceRolled by rememberSaveable { mutableStateOf("") }
+    val imageResource = when(numSides) {
+        "4" -> R.drawable.d4
+        "6" -> R.drawable.d6
+        "8" -> R.drawable.d8
+        "10" -> R.drawable.d10
+        "12" -> R.drawable.d12
+        "20" -> R.drawable.d20
+        else -> R.drawable.d100
+    }
     Column(
         modifier = Modifier.fillMaxSize(), Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -75,19 +87,28 @@ fun RollScreen(navController: NavController) {
                 Text(stringResource(R.string.home))
             }
         }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(stringResource(R.string.die_total, diceTotal))
-            Text(stringResource(R.string.die_rolled, diceRolled))
+        Row {
+            Image(
+                painter = painterResource(imageResource),
+                contentDescription = numSides,
+                contentScale = ContentScale.Inside
+            )
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(stringResource(R.string.die_total, diceTotal))
+                Text(stringResource(R.string.die_rolled, diceRolled))
+            }
         }
+
     }
 }
 
 fun rollEm(numSides: String = "6", numDice: String = "1"): SnapshotStateList<Int> {
     val dice = mutableListOf<Int>()
     for (i in 0..<numDice.toInt()) {
+        print(i)
         dice.add(Random.nextInt(1..numSides.toInt()))
     }
     return dice.toMutableStateList()
