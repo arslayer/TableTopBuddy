@@ -22,6 +22,10 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.unit.dp
 
+/**
+ * Code from https://medium.com/@kappdev/coin-flipper-animation-with-jetpack-compose-33a367c9cde4
+ */
+
 val TShape = GenericShape { size, _ ->
     val height = size.height
     val width = size.width

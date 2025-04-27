@@ -16,6 +16,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
+/**
+ * Code from https://medium.com/@kappdev/coin-flipper-animation-with-jetpack-compose-33a367c9cde4
+ */
+
 @Composable
 fun CoinFlipper(
     modifier: Modifier = Modifier,
