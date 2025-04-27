@@ -1,5 +1,25 @@
 package org.cist2931.tabletopbuddy
 
+/**
+ * TableTopBuddy: A Health Tracker, Dice roller, and coin flipper for Android
+ *     Copyright (C) 2025  Davin Asiala, Philip Duong, and Jesus Alvarez
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *     Reach us at our github page: https://github.com/arslayer/TableTopBuddy
+ */
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -68,7 +88,7 @@ fun RollScreen(navController: NavController) {
             },
             label = { Text(stringResource(R.string.number_of_dice)) }
         )
-        numSides = diceSelectorRadio().toString()
+        numSides = diceSelectorRadio()
         OutlinedTextField(
             value = diceModifier,
             onValueChange = { value ->
@@ -132,9 +152,9 @@ fun getDiceRolled(dice: List<Int>): String {
 }
 
 @Composable
-fun diceSelectorRadio(modifier: Modifier = Modifier): Int {
+fun diceSelectorRadio(modifier: Modifier = Modifier): String {
     val diceOptions = listOf("4", "6", "8", "10", "12", "20", "100")
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[0]) }
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[6]) }
     Column(modifier.selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(stringResource(R.string.number_of_sides))
         diceOptions.forEach { text ->
@@ -162,7 +182,7 @@ fun diceSelectorRadio(modifier: Modifier = Modifier): Int {
             }
         }
     }
-    return selectedOption.toInt()
+    return selectedOption
 }
 
 @Preview(showBackground = true)

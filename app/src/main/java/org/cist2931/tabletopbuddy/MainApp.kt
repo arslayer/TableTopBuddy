@@ -1,5 +1,25 @@
 package org.cist2931.tabletopbuddy
 
+/**
+ * TableTopBuddy: A Health Tracker, Dice roller, and coin flipper for Android
+ *     Copyright (C) 2025  Davin Asiala, Philip Duong, and Jesus Alvarez
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *     Reach us at our github page: https://github.com/arslayer/TableTopBuddy
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -76,10 +96,6 @@ fun MainScreen(navController: NavController, vm: HealthViewModel = viewModel()) 
                 )
             )
         }
-//        Button(onClick = {navController.navigate(MainNames.Health.name)}){ Text(text = stringResource(
-//            R.string.track_health
-//        )
-//        )}
     }
 }
 
@@ -104,9 +120,6 @@ fun MainApp() {
         composable(route = MainNames.Roll.name) {
             RollScreen(navController)
         }
-//        composable(route = MainNames.Health.name) {
-//            HealthScreen(navController)
-//        }
     }
 }
 
