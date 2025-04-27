@@ -44,6 +44,7 @@ import androidx.lifecycle.ViewModel
 //}
 
 class HealthViewModel : ViewModel() {
+
     var totalHealth by mutableStateOf("0")
         private set
 

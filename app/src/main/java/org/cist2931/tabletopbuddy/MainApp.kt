@@ -27,10 +27,8 @@ enum class MainNames {
     Roll,
 }
 
-
 @Composable
-fun MainScreen(navController: NavController) {
-    val vm: HealthViewModel = viewModel()
+fun MainScreen(navController: NavController, vm: HealthViewModel = viewModel()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -89,13 +87,15 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun MainApp() {
     val navController = rememberNavController()
+    val vm: HealthViewModel = viewModel()
     NavHost(
         navController = navController,
         startDestination = MainNames.Start.name
     ) {
         composable(route = MainNames.Start.name) {
             MainScreen(
-                navController
+                navController,
+                vm
             )
         }
         composable(route = MainNames.CoinFlip.name) {
