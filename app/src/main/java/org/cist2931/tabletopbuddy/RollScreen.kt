@@ -68,7 +68,7 @@ fun RollScreen(navController: NavController) {
             },
             label = { Text(stringResource(R.string.number_of_dice)) }
         )
-        numSides = diceSelectorRadio().toString()
+        numSides = diceSelectorRadio()
         OutlinedTextField(
             value = diceModifier,
             onValueChange = { value ->
@@ -132,7 +132,7 @@ fun getDiceRolled(dice: List<Int>): String {
 }
 
 @Composable
-fun diceSelectorRadio(modifier: Modifier = Modifier): Int {
+fun diceSelectorRadio(modifier: Modifier = Modifier): String {
     val diceOptions = listOf("4", "6", "8", "10", "12", "20", "100")
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(diceOptions[0]) }
     Column(modifier.selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -162,7 +162,7 @@ fun diceSelectorRadio(modifier: Modifier = Modifier): Int {
             }
         }
     }
-    return selectedOption.toInt()
+    return selectedOption
 }
 
 @Preview(showBackground = true)
