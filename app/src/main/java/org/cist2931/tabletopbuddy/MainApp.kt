@@ -76,10 +76,6 @@ fun MainScreen(navController: NavController, vm: HealthViewModel = viewModel()) 
                 )
             )
         }
-//        Button(onClick = {navController.navigate(MainNames.Health.name)}){ Text(text = stringResource(
-//            R.string.track_health
-//        )
-//        )}
     }
 }
 
@@ -104,9 +100,6 @@ fun MainApp() {
         composable(route = MainNames.Roll.name) {
             RollScreen(navController)
         }
-//        composable(route = MainNames.Health.name) {
-//            HealthScreen(navController)
-//        }
     }
 }
 
